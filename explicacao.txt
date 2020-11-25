@@ -1,0 +1,137 @@
+CONSTRUTORES E DESTRUTORES
+
+Agora a gente sabe que os objetos são criados a partir das classes. mas existe um metodo especial q são os metodos construtores, q pode ter mais de um construtor, 
+e esse é o metodo usado exatamente com o objetivo de gerar uma instancia do tipo de classe q vc definiu na variavel, e também fazer alguma logica importante na criacao de cada novo objeto. ele é um inicializador
+entao aqui tem um exemplo para a gente entender a regra relacionada a esse tipo de metodo
+
+	GERAL
+	objetos criados a partir de classes
+	metodo especial: metodos construtores(pre-define como vc vai criar)
+	gera uma instancia do tipo de classe q vc definiu na variavel
+	logica importante na criação
+	inicializador
+
+py:
+eu criei uma classe com o nome construtor, declarei um método com o __init__, que é a palavra reservada pra criar um construtor em python, onde ele recebe o self e pode receber qualquer outra coisa como parametro, ou não receber nada, então ele vai inicializar com essas informacoes que vão ser pre-definidas aqui. o self serve para referenciar o proprio objeto, então o parametro recebido, vai para o param do proprio objeto.
+
+	CONSTRUTOR
+	criei uma classe
+	declarei __init__ (palavra reservada)
+	informações pre-definidas
+	recebe o self (referencia o proprio objeto)
+	receber varios ou nenhum
+
+o destrutor como o proprio nome diz, ele destroi a instancia do objeto, e assim como o construtor, é programavel o que voce pode fazer ao destruir o objeto
+então eu criei outra classe, e dentro dela criei um destrutor, que também possui uma palavra reservada da linguagem, q é o __del__,  aqui eu coloquei só para printar que o objeto foi destruido, mas eu poderia colocar outras coisas pra ele fazer
+	
+	DESTRUTOR
+	destroi a instancia
+	programavel
+	destrutor __del__ (palavra reservada)
+	printei
+
+basicamente é assim que funciona os construtores e os destrutores, então você pode colocar os dois ou somente um dentro das classes, definindo o que fazer em cada situação
+pra testar, eu criei um objeto da classe Construtor() sem passar nenhum parametro, e logo em seguida mandei imprimir, então a saida vai mostrar que esse atributo existe dentro do objeto, que eu defini antes, mas não tem nenhuma informação.
+então eu criei um segundo objeto onde eu inicializei com um parametro, e quando eu imprimo, ele mostra que o parametro colocado foi pra essa variavel
+aqui eu deletei o objeto cons, só para mostrar que vc pode deletar normalmente mesmo que a classe não tenha um destrutor, então o destrutor tem exatamente a função de executar algo quando o objeto for deletado, e não deletar em si
+então depois, eu criei um objeto na classe destrutor, e logo em seguida deletei, mostrando que os comandos que tinham dentro do destrutor da classe, foram executados
+
+	EXECUCAO
+	assim é a base
+	classe pode ter um, dois ou nenhum
+	
+
+cpp:
+bom, comparando um pouco com cpp, eu criei uma classe assim como em python, e defini os atributos publicos e privados. criei um construtor, que é um metodo com nenhum tipo de retorno e o nome sendo exatamente o nome da classe, inclusive as letras maiusculas e minusculas
+diferente do python, pra casa numero de parametros que eu quiser passar pra construir um objeto, eu vou ter q sobrecarregar a funcao e fazer um novo construtor para isso
+esse primeiro aqui por exemplo é um construtor padrão, e cria um objeto sem nenhum atributo,
+já o segundo construtor eu informo que o objeto possui um atributo, e passo o valor dele
+
+no destrutor, tambem fiz um construtor padrao que não faz nada além de construir ao ser chamado, um que recebe o parametro, e um destrutor que caso for chamado, executa o que tem dentro do método dele, que nesse caso informa que foi destruido, a sintaxe do destrutor é a mesma que o do construtor só que com esse ~ na frente
+
+aqui nos testes, a gente vê a criacao de objetos dos dois métodos construtores da classe Construtor, e um no na classe Destrutor, então depois eu imprimo pra mostrar que tem um atributo lá dentro, e logo depois destruo, porém como a gente vê na saida do programa, o objeto da dizendo que foi destruido duas vezes, isso acontece pq em cpp, sempre q acaba de executar um programa ele destroi automaticamente os objetos, então mesmo eu forçando a chamada dessa função antes, ela vai executar somente o codigo que tem dentro, e irá destruir de verdade só ao terminar a execução.
+o objeto da classe Construtor também foi destruido, só que como eu não programei nada pra imprimir ao destruir, não vemos a saída que eu coloquei nesse outro avisando que o objeto foi deletado
+    
+	CPP
+	sobrecarrecarga
+
+ASSOCIACAO
+
+quando se tem mais classes, é possivel fazer relações estruturais entre elas, e isso que é uma associação. ou seja, ela informa que uma classe faz parte da estrutura de outra.
+mas em geral, uma classe não depende da outra, e ambas podem viver sem a outra, mas existem casos especiais que isso não ocorre, mas isso vou falar mais pra frente.
+	
+	CONCEITO
+	quando mais de uma classe -> relação
+	classe não depende da outra
+	ambas podem viver sem a outra
+
+py:
+nesse código, tem um exemplo mais prático, onde criei uma classe Escritor, que tem os atributos nome e ferramenta.
+então pra ferramenta do escritor ser um objeto, com atributos também, eu criei uma classe Caneta, e uma classe MaquinaDeEscrever. a gente pode ver, que as classes não estão relacionadas entre si, mas eu posso relaciona-las no desenvolvimento do programa. 
+	
+	PY
+	criei uma classe
+	atributos nome e ferramenta
+	para ferramenta ser objeto com atributos
+	não estão relacionadas entre si (relacionar no desenvolvimento)
+
+então eu criei um objeto escritor da classe Escritor, um objeto caneta da classe Caneta e um objeto maquina da classe MaquinaDeEscrever, e no proprio método do escritor, eu passo o parametro de um objeto, que nesse caso foi a caneta, então vemos que a saida vai ser o método escrever da caneta, e depois quando eu mudo a ferramenta pra maquina, o método escrever muda também. e assim eu associo esses dois objetos.
+	
+	EXECUCAO
+	criei objeto da classe
+	objeto caneta como parametro do método do escritor
+	assim eu associo
+
+
+cpp:
+para comparar, aqui tem o mesmo código só q em cpp, só que a maior diferença é que eu não posso trocar a ferramenta somente trocando o metodo metodoAssociativo da classe Escritor, pois quando vc declara um atributo em cpp, precisa declarar seu tipo, e nesse caso o tipo da ferramenta é justamente a classe Caneta, então pra mudar a ferramenta além de chamar esse método, tem q mudar o tipo.
+
+	CPP
+	declaração do do atributo ferramenta pre-definido com objeto	
+	o metodo de mudar não seria util nesse caso
+
+AGREGRACAO
+
+já tem a agregação, que é um tipo de associacao q tenta mostrar q as informacoes de um objeto
+precisam ser complementadas pelas informacoes contidas em um ou mais objetos de outra classe, ou seja, uma classe agrega outra, mas não exclusivamente
+
+	CONCEITO
+	uma classe agrega outra
+	quero complementar informacoes contidas em um ou mais objeto para outro
+
+py:
+por exemplo aqui, o atributo produtos da classe carrinho, é formado por um array de objetos da classe Produto, ou seja, dentro de casa posição do array, tem um objeto contendo o nome e o valor do produto, então se eu crio 3 objetos Produto, e insiro no carrinho, quando eu chamo o método de listar, a gente ve todas as informações dentro desse atributo.
+outra coisa, é que nenhuma classe depende da outra pra existir, se eu apago um objeto da classe CarrinhodeCompras, os objetos da classe Produto não deixam de existir e vice versa, porém, sem os produtos, o método lista_produto do carrinho não funciona. 
+
+	PY
+	classe Carrinho
+	atributo array de objetos da classe Produto
+
+	EXECUCAO
+	crio 3 objetos
+	insiro no carrinho
+	nenhuma depende da outra(se apaga uma a outra n deixa de existir)
+	sem produto método n funciona	
+
+cpp: 
+e aqui o mesmo programa em cpp, mas assim como o exemplo anterior, eu preciso declarar o tipo da variavel, que nesse caso é a classe Produto, no vector, além das outras diferenças básicas entre as linguagens.
+
+COMPOSICAO
+
+além da agregação, temos a composição, que é a relação mais forte entre classes. nesse caso de composição, uma classe vai ser dona de objetos de outra classe, isso quer dizer q se a classe principal for apagada, todos os objetos que a classe principal utilizou vão ser apagados com ela.
+
+	CONCEITO
+	relação mais forte entre classes
+	(nesse caso) uma classe -> dona de objetos de outra classe
+	se a classe principal for apagada, objetos q ela usou vão ser
+
+py:
+aqui eu criei uma classe Cliente, e uma classe Endereco, porém, eu insiro o endereço dentro do proprio método da classe Cliente, ou seja, criei o objeto cliente1, e chamo o método insere_endereco informando os atributos do objeto endereço que vai ser criado, então por isso estar aqui dentro, se eu excluir o objeto cliente, seu endereço vai ser excluido junto, então aqui tem só alguns exemplos de saida, onde tem uma pessoa que pode ter mais de um endereço
+
+	PY
+	criei classe
+	insiro endereço dentro do método da classe Cliente
+	
+
+cpp: 
+e aqui temos de novo a mesma coisa em cpp, só que por ser cpp né, o código fica bem mais extenso

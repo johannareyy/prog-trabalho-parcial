@@ -1,0 +1,12 @@
+Pode-se criar atributos os inserindo no objeto, porém, não podemos solicitar um valor ainda não atribuido.
+self é referencia ao proprio objeto
+
+Herança multipla é a capacidade de herdar de mais de uma classe, seleciona propriedade da esquerda para a direita.
+
+template n achei nada n
+
+https://www.it-swarm-pt.tech/pt/python/quando-usar-associacao-agregacao-composicao-e-heranca/826656569/
+
+super  https://medium.com/code-rocket-blog/entendendo-o-super-do-python-da17ee8d26ca
+
+polimorfismo herdar o construtor do pai ou metodos
